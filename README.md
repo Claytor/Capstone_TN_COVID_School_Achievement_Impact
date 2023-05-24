@@ -2,7 +2,9 @@
 
 ## Executive Summary
 
-This project aims to analyze the impact of learning loss and the effectiveness of learning loss recovery interventions for individual schools within all Tennessee districts. The motivation for this project stems from the observation that, contrary to my personal expectations, achievement metrics in some districts continued to decline during the post-COVID learning recovery phase. I hope that by measuring the rate of improvement (ROI) for each school I will be able to discern features in individual school performance that could be predictive of a district’s performance. Geospatial data and visualizations will be used to help users explore the data through a dashboard developed using the Plotly Dash package in Python.
+This project aims to analyze the impact of learning loss and the effectiveness of learning loss recovery interventions for Students in Tennessee.  For the purpose of this analysis, impact and recovery is measured in terms of changes in annual achievement assessment scores from the years 2018 - 2022.  The bulk of the data used in this analysis was provided by the Tennessee Department of Education.  In aggregate, the data contains 2,375,946 entries and represents approximateley 485 schools within Tennessee's 137 school districts for a combined
+
+The motivation for this project stems from the observation that, contrary to my personal expectations, achievement metrics in some districts continued to decline during the post-COVID learning recovery phase. I hope that by measuring the rate of improvement (ROI) for each school I will be able to discern features in individual school performance that could be predictive of a district’s performance. Geospatial data and visualizations will be used to help users explore the data through a dashboard developed using the Plotly Dash package in Python.
 
 ## Motivation
 
@@ -48,4 +50,14 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 ### 05/21/23
 
 * I spoke with Neda.  She reccommended the I remove the "mislabeled" data and salvage what I can keep.  I'm inclined to agree.
-* I standardized the naming of the 2017 dataset.  Only problem is, there is not a "test" Associated with each subject.  I'll have to generate that too for the analysis to work.
+* I standardized the naming of the 2017 dataset.  Only problem is, there is not a `test` Associated with each subject.  I'll have to generate that mapping too for the analysis to work.
+* I sent an Email to TNED.Assessment@tn.gov to help clairify a few questions about data from 2017 and some assessments that appear some years, and those who do not.
+* For the sake of time, I'm just going to have to leave 2017 alone.  Labeling is incomplete and ambiguous.  I cannot make an accurate prediction
+* I found out that the Charter School Comission was established in 2019.  So If I do have charter school data, It may be limited before COVID closures (or that could be an untested assumption on my part.  Will continue to keep that analysis in my back pocket).
+
+| test                            | Algebra I | Algebra II | Biology I | Chemistry | ELA    | English I | English II | English III | Geometry | Integrated Math I | Integrated Math II | Integrated Math III | Math   | Science | Social Studies | US History |
+| ------------------------------- | --------- | ---------- | --------- | --------- | ------ | --------- | ---------- | ----------- | -------- | ----------------- | ------------------ | ------------------- | ------ | ------- | -------------- | ---------- |
+| EOC                             | 91205     | 73803      | 70002     | 17329     | 0      | 73930     | 74950      | 14473       | 84102    | 20064             | 17842              | 14228               | 0      | 0       | 0              | 68106      |
+| MSAA                            | 0         | 0          | 0         | 0         | 39430  | 0         | 0          | 0           | 0        | 0                 | 0                  | 0                   | 39430  | 0       | 0              | 0          |
+| MSAA/Alt-Science/Social Studies | 0         | 0          | 15087     | 0         | 110944 | 0         | 0          | 0           | 0        | 0                 | 0                  | 0                   | 110924 | 83458   | 56907          | 0          |
+| TNReady                         | 0         | 0          | 0         | 0         | 406710 | 0         | 0          | 0           | 0        | 0                 | 0                  | 0                   | 405732 | 270697  | 216593         | 0          |
