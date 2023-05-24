@@ -44,3 +44,8 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
   * the resulting dataframe has **2,375,946** entries.  Many will be dropped because having a grade-level breakdown of each assessment does not assist in this analysis.  There are cases where
 * I am **EXCITED** that where `grade =  All Grades` ,  `student_group` does seem to yeild some subpopulation data (gender, ethnicity, english language learner, students with disabilities, etc.) at the scool level!  I'm sure that availability must vairy on a school-by-school basis, but it might be enough to make an adequate analysis.
 * It looks like there may be some solid charter school information in some of the later datasets.  I wonder if there are noticable differences between the two groups?  I'd love to dig deeper.  I'll keep in in my back pocket for later.
+
+### 05/21/23
+
+* I spoke with Neda.  She reccommended the I remove the "mislabeled" data and salvage what I can keep.  I'm inclined to agree.
+* I standardized the naming of the 2017 dataset.  Only problem is, there is not a "test" Associated with each subject.  I'll have to generate that too for the analysis to work.
