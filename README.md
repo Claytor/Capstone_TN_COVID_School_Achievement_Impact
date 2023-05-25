@@ -63,3 +63,12 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 | TNReady                         | 0         | 0          | 0         | 0         | 406710 | 0         | 0          | 0           | 0        | 0                 | 0                  | 0                   | 405732 | 270697  | 216593         | 0          |
 
 * Looks like I need to break this table down a bit further to aggregate by test and then subject. The data are noisy and I will filter by the aggregated scores reported in each school to account for that. The general heuristic is that the majority of students tend to take these tests in a specific grade.  However, some students take the tests in earlier or later grades than their peers.  In these cases, there can be much grade-level suppression.  Therefore, aggregatons are much less suppressed than grade-level reports.
+
+## 05/21/23
+
+* [X] Drop `MSAA` & `MSAA/Alt`
+* [X] Filter to `Grade = 'All Grades`
+
+* When dropping `MSAA` tests, the resulting dataframe contains **1,919,766** rows. This removes **456,180** rows from the dataset.
+* Using the aggregate of `All Grades` , the data now represent the average subject proficiency for each school. The dataframe was reduced to 525,044 rows
+* I think I maybe able to salvage more demographic information by performing some simple subtraction.  The data wont have as many dimensions as the non-suppressed data, but maybe I can still compare Non-Proficient vs Proficeient.
