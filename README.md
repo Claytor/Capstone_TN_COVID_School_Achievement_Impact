@@ -47,7 +47,7 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 * I am **EXCITED** that where `grade =  All Grades` ,  `student_group` does seem to yeild some subpopulation data (gender, ethnicity, english language learner, students with disabilities, etc.) at the scool level!  I'm sure that availability must vairy on a school-by-school basis, but it might be enough to make an adequate analysis.
 * It looks like there may be some solid charter school information in some of the later datasets.  I wonder if there are noticable differences between the two groups?  I'd love to dig deeper.  I'll keep in in my back pocket for later.
 
-### 05/21/23
+### 05/23/23
 
 * I spoke with Neda.  She reccommended the I remove the "mislabeled" data and salvage what I can keep.  I'm inclined to agree.
 * I standardized the naming of the 2017 dataset.  Only problem is, there is not a `test` Associated with each subject.  I'll have to generate that mapping too for the analysis to work.
@@ -64,11 +64,24 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 * Looks like I need to break this table down a bit further to aggregate by test and then subject. The data are noisy and I will filter by the aggregated scores reported in each school to account for that. The general heuristic is that the majority of students tend to take these tests in a specific grade.  However, some students take the tests in earlier or later grades than their peers.  In these cases, there can be much grade-level suppression.  Therefore, aggregatons are much less suppressed than grade-level reports.
 
-## 05/21/23
+## 05/24/23
 
 * [X] Drop `MSAA` & `MSAA/Alt`
 * [X] Filter to `Grade = 'All Grades`
 
 * When dropping `MSAA` tests, the resulting dataframe contains **1,919,766** rows. This removes **456,180** rows from the dataset.
-* Using the aggregate of `All Grades` , the data now represent the average subject proficiency for each school. The dataframe was reduced to 525,044 rows
+* Using the aggregate of `All Grades` , the data now represent the average subject proficiency for each school. The dataframe was reduced to **525,044** rows
 * I think I maybe able to salvage more demographic information by performing some simple subtraction.  The data wont have as many dimensions as the non-suppressed data, but maybe I can still compare Non-Proficient vs Proficeient.
+
+## 05/25/23
+
+* [X] Drop `pct_approaching`, `pct_met_expectations`, `pct_exceeded_expectations` achievement categories.
+* [X] Drop `*`  There is no way to infer the proficiency of student_groups that do not have at-least 10 valid tests.
+* [ ] make a new column `not_met` wich will be 1- pct_met_exceeded.  This will allow me to see the total percentage of student_groups that did not meet expectations, regardelss of performance
+* [ ] Split off and briefly analyze fully `**` suppressed data.
+
+* I honestly think that the data will be easier to work with if I can make expectations a binary classifier.
+  * If a student_group's proficiency scores for a building are suppressed due to achievement outliers, the `pct_met_exceeded` is still reported.  If I subtract that number from 1, I will be left with the percent that did not meet expectations.  I cannot infer categories inbetween, but I can make a simple "pass/fail" comparison.
+  * There is nothing I can do about `*`  because it suggests that enrollment (or number of valid tests ) of of that student_group is less than 10 at the individual school.
+* Assumptions really being challenged here.  Not so simple to calculate missing values without a little extra logic.  Apparrently there can be `**` in some of the `pct_met_exceeded`.  There were **44,454** entries where `pct_met_exceeded` was suppressed.  If filtered to "All Students" `student_group`, **2,405** entries are `**` suppressed.
+  * I know that I'm going to have to remove the fully suppressed `**` data from my main dataframe, But I'm going to capture it into a separate df for some light analysis.
