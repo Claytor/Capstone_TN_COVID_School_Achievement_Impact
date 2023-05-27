@@ -85,3 +85,10 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
   * There is nothing I can do about `*`  because it suggests that enrollment (or number of valid tests ) of of that student_group is less than 10 at the individual school.
 * Assumptions really being challenged here.  Not so simple to calculate missing values without a little extra logic.  Apparrently there can be `**` in some of the `pct_met_exceeded`.  There were **44,454** entries where `pct_met_exceeded` was suppressed.  If filtered to "All Students" `student_group`, **2,405** entries are `**` suppressed.
   * I know that I'm going to have to remove the fully suppressed `**` data from my main dataframe, But I'm going to capture it into a separate df for some light analysis.
+
+## 05/27/23
+
+* [ ] make a new column `not_met` wich will be 1- pct_met_exceeded.  This will allow me to see the total percentage of student_groups that did not meet expectations, regardelss of performance
+* [ ] Split off and briefly analyze fully `**` suppressed data.
+
+* Spoke with Neda.  Lots of encouragement.  I'm stoked!  I'm almost ready to joing NCES data
