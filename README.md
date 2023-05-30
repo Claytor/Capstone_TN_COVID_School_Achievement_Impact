@@ -105,12 +105,18 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 ### 05/29/23
 
-* [ ] Reorder df cols for assessment and elsi data
-* [ ] merge assessment and elsi
-* [ ] make a new column `not_met` wich will be 1- pct_met_exceeded.  This will allow me to see the total percentage of student_groups that did not meet expectations, regardelss of performance
-* [ ] Split off and briefly analyze fully `**` suppressed data.
-
 - Merged all CCD data from NCES for the years in quesiton.  Set encoding to `latin_1` and low memory to `False` because Pandas wanted to encode as `utf-8` and `us_ascii` did not work either, Though that's what the original files were encoded in.
   - Dropped all schools except those in Tennessee
 - . . . Then I took a long hard look at the data that I needed to merge and what else I wanted to include.  I poked around the NCES website and found their ElSi table generator and I decided to generate my own custom file per year.  This keeps me from having to clean the CCD data of what I don't need and allows me to avoid having to merge the geoencode data and other additional data.
 - And that's what I get for trying to be clever.  Using the tool to grab one year at a time and then merging resulted in unneccisary complication and, more critically, misaligned datasets.  I changed approach instead to dumping all years in wide form and translating to long form.  The data looks fully merged and free from most human error.
+
+### 05/30/23
+
+* [X] Reorder df cols for assessment and elsi data
+* [ ] merge assessment and elsi
+* [ ] make a new column `not_met` wich will be 1- pct_met_exceeded.  This will allow me to see the total percentage of student_groups that did not meet expectations, regardelss of performance
+* [ ] Split off and briefly analyze fully `**` suppressed data.
+
+* Fixed naming and order of columns in NCES Data.
+* Exported NCES data for merging with school-level testing data data.
+  * I exported this as elsi_clean.csv to my school_based folder.b
