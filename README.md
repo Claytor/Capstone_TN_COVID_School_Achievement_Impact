@@ -66,55 +66,51 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 ### 05/24/23
 
-* [x] Drop `MSAA` & `MSAA/Alt`
-
-* [x] Filter to `Grade = 'All Grades`
+* [X] Drop `MSAA` & `MSAA/Alt`
+* [X] Filter to `Grade = 'All Grades`
 
 * When dropping `MSAA` tests, the resulting dataframe contains **1,919,766** rows. This removes **456,180** rows from the dataset.
-
 * Using the aggregate of `All Grades` , the data now represent the average subject proficiency for each school. The dataframe was reduced to **525,044** rows
-
 * I think I maybe able to salvage more demographic information by performing some simple subtraction.  The data wont have as many dimensions as the non-suppressed data, but maybe I can still compare Non-Proficient vs Proficeient.
 
 ### 05/25/23
 
-* [x] Drop `pct_approaching`, `pct_met_expectations`, `pct_exceeded_expectations` achievement categories.
-
-* [x] Drop `*`  There is no way to infer the proficiency of student_groups that do not have at-least 10 valid tests.
-
-* [ ] make a new column `not_met` wich will be 1- pct_met_exceeded.  This will allow me to see the total percentage of student_groups that did not meet expectations, regardelss of performance
-
-* [ ] Split off and briefly analyze fully `**` suppressed data.
+* [X] Drop `pct_approaching`, `pct_met_expectations`, `pct_exceeded_expectations` achievement categories.
+* [X] Drop `*`  There is no way to infer the proficiency of student_groups that do not have at-least 10 valid tests.
 
 * I honestly think that the data will be easier to work with if I can make expectations a binary classifier.
-  
+
   * If a student_group's proficiency scores for a building are suppressed due to achievement outliers, the `pct_met_exceeded` is still reported.  If I subtract that number from 1, I will be left with the percent that did not meet expectations.  I cannot infer categories inbetween, but I can make a simple "pass/fail" comparison.
   * There is nothing I can do about `*`  because it suggests that enrollment (or number of valid tests ) of of that student_group is less than 10 at the individual school.
-
 * Assumptions really being challenged here.  Not so simple to calculate missing values without a little extra logic.  Apparrently there can be `**` in some of the `pct_met_exceeded`.  There were **44,454** entries where `pct_met_exceeded` was suppressed.  If filtered to "All Students" `student_group`, **2,405** entries are `**` suppressed.
-  
-  * I know that I'm going to have to remove the fully suppressed `**` data from my main dataframe, But I'm going to capture it into a separate df for some light analysis. 
+
+  * I know that I'm going to have to remove the fully suppressed `**` data from my main dataframe, But I'm going to capture it into a separate df for some light analysis.
 
 ### 05/27/23
 
-* [ ] make a new column `not_met` wich will be 1- pct_met_exceeded.  This will allow me to see the total percentage of student_groups that did not meet expectations, regardelss of performance
-
-* [ ] Split off and briefly analyze fully `**` suppressed data.
-
 * Spoke with Neda.  Lots of encouragement.  I'm stoked!  I'm almost ready to joing NCES data
+* I am going to merge geo data before splitting off the fully suppressed data.  I think it would be good to have geographic data as a part of my full suppression information.
 
 ### 05/28/23
 
 - Researched datasets From NCES.  Pulled Common Core data files for each year as well.  The data isn't as nice for getting some of the descriptive labels that I thought I could . . . but it does save me a lot of work in not haveing to use an API to geoencode addresses.
-  
-  - Looks like **geoencoding** will not be needed for this project as NCES provides lat/long and addressess for all schools in a given year.  They also include shapefiles for both school and district boundaries.
-  
-  - Created the following data directory structure
-    
-    - Common Core Data
-    
-    - Geoencode - School
-    
-    - Geoencode - LEA
 
-- No shape files for 2018.  I should be able to infer geolocations from subsequent files.
+  - Looks like **geoencoding** will not be needed for this project as NCES provides lat/long and addressess for all schools in a given year.  They also include shapefiles for both school and district boundaries.
+  - Created the following data directory structure
+
+    - Common Core Data
+    - Geoencode - School
+    - Geoencode - LEA
+- No shape files for 2018.  I wonder what the best way to deal with that would be?
+
+### 05/29/23
+
+* [ ] Reorder df cols for assessment and elsi data
+* [ ] merge assessment and elsi
+* [ ] make a new column `not_met` wich will be 1- pct_met_exceeded.  This will allow me to see the total percentage of student_groups that did not meet expectations, regardelss of performance
+* [ ] Split off and briefly analyze fully `**` suppressed data.
+
+- Merged all CCD data from NCES for the years in quesiton.  Set encoding to `latin_1` and low memory to `False` because Pandas wanted to encode as `utf-8` and `us_ascii` did not work either, Though that's what the original files were encoded in.
+  - Dropped all schools except those in Tennessee
+- . . . Then I took a long hard look at the data that I needed to merge and what else I wanted to include.  I poked around the NCES website and found their ElSi table generator and I decided to generate my own custom file per year.  This keeps me from having to clean the CCD data of what I don't need and allows me to avoid having to merge the geoencode data and other additional data.
+- And that's what I get for trying to be clever.  Using the tool to grab one year at a time and then merging resulted in unneccisary complication and, more critically, misaligned datasets.  I changed approach instead to dumping all years in wide form and translating to long form.  The data looks fully merged and free from most human error.
