@@ -113,10 +113,23 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 ### 05/30/23
 
 * [X] Reorder df cols for assessment and elsi data
-* [ ] merge assessment and elsi
+* [X] merge assessment and elsi
+* [X] deal with the nan values that resulted from the merging
+* [X] Split off `**` suppressed data.  Put it in its own pkl to avoid overwriting it.  I cannot convert proficiencies to numbers with `**` still in the `pct_met_exceeded` rows.
 * [ ] make a new column `not_met` wich will be 1- pct_met_exceeded.  This will allow me to see the total percentage of student_groups that did not meet expectations, regardelss of performance
-* [ ] Split off and briefly analyze fully `**` suppressed data.
+* [ ] Briefly analyze  `**` suppressed data.
 
 * Fixed naming and order of columns in NCES Data.
 * Exported NCES data for merging with school-level testing data data.
-  * I exported this as elsi_clean.csv to my school_based folder.b
+
+  * I exported this as elsi_clean.pkl 🥒 to my school_based folder.
+* Merged the dataframes.  It appears that **693** rows from the assessment dataset went unmatched when merging.
+* Spoke with Rohit, he gave me some good info.  He always has the coolest hats 🛹
+
+  * [https://gis.stackexchange.com/questions/113799/reading-shapefile-in-python](https://gis.stackexchange.com/questions/113799/reading-shapefile-in-python)
+  * import geopandas as gpd
+  * shapefile = gpd.read_file("shapefile.shp")
+  * print(shapefile)
+* Looks like there are **17 schools** that are managed by the state or do not appear more than once before the year 2021.  The vast majority of the reported scores are `**` supressed.  These will be removed from the **assessments df**.  However, they will be a part of my fully suppressed scores analysis.
+* **44,454** scores across all years, schools, and subjects were fully suppressed in the data they were removed.
+* **335,452** non-suppressed datapoints are now available in the dataset.
