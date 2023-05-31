@@ -116,8 +116,6 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 * [X] merge assessment and elsi
 * [X] deal with the nan values that resulted from the merging
 * [X] Split off `**` suppressed data.  Put it in its own pkl to avoid overwriting it.  I cannot convert proficiencies to numbers with `**` still in the `pct_met_exceeded` rows.
-* [ ] make a new column `not_met` wich will be 1- pct_met_exceeded.  This will allow me to see the total percentage of student_groups that did not meet expectations, regardelss of performance
-* [ ] Briefly analyze  `**` suppressed data.
 
 * Fixed naming and order of columns in NCES Data.
 * Exported NCES data for merging with school-level testing data data.
@@ -133,3 +131,13 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 * Looks like there are **17 schools** that are managed by the state or do not appear more than once before the year 2021.  The vast majority of the reported scores are `**` supressed.  These will be removed from the **assessments df**.  However, they will be a part of my fully suppressed scores analysis.
 * **44,454** scores across all years, schools, and subjects were fully suppressed in the data they were removed.
 * **335,452** non-suppressed datapoints are now available in the dataset.
+
+### 05/31/23
+
+* [X] make a new column `not_met` elss of performance
+* [ ] Remove assessments that only apear in one year
+* [ ] Add subject_level column which associates each type of test with its subject content( e.g., literacy, numeracy, science, and social studies)
+* [ ] Briefly analyze  `**` suppressed data.
+
+* I added added a calculated column,  `not_met`. This will allow me to see the total percentage of student_groups that did not meet expectations, regard.
+* Made a pivot table to look at average state-wide proficiencies for each subject each year, grouped by test type.
