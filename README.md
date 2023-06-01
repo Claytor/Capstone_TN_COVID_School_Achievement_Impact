@@ -164,7 +164,7 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 * My new subject_area column was a success.  I created a dictionary and mapped it to associate each test type with a subject area descriptor.
 
-* I made some cool plotly visuals while I was waiting and entire eternity for Conda to install GeoPandas
+* I made some cool plotly visuals while I was waiting an entire eternity for Conda to install GeoPandas
 
 * Exported prepped dataset to be used in EDA notebooks
 
