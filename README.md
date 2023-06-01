@@ -135,9 +135,19 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 ### 05/31/23
 
 * [X] make a new column `not_met` elss of performance
-* [ ] Remove assessments that only apear in one year
-* [ ] Add subject_level column which associates each type of test with its subject content( e.g., literacy, numeracy, science, and social studies)
+* [X] Remove assessments that only apear in one year
+* [X] Add subject_level column which associates each type of test with its subject content( e.g., literacy, numeracy, science, and social studies)
+* [X] Create mapping dictionary to apply content_area labels to subjects.
+* [ ] Create Plotly Notebook
+* [ ] Create EDA Notebook
 * [ ] Briefly analyze  `**` suppressed data.
 
 * I added added a calculated column,  `not_met`. This will allow me to see the total percentage of student_groups that did not meet expectations, regard.
 * Made a pivot table to look at average state-wide proficiencies for each subject each year, grouped by test type.
+* My new subject_area column was a success.  I created a dictionary and mapped it to associate each test type with a subject area descriptor.
+* I made some cool plotly visuals while I was waiting and entire eternity for conda to install GeoPandas
+* Exported prepped dataset to be used in EDA notebooks
+
+|  |  |
+| - | - |
+|  |  |
