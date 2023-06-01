@@ -177,3 +177,5 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 * [ ] Briefly analyze  `**` suppressed data.
 
 * I made a new EDA and Plotly notebook.  I'm ready to begin diving deeper into the data and to visualize it.
+
+* Read some documentation about plotly dash.
