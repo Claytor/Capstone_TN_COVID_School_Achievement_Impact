@@ -66,24 +66,29 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 ### 05/24/23
 
-* [X] Drop `MSAA` & `MSAA/Alt`
-* [X] Filter to `Grade = 'All Grades`
+* [x] Drop `MSAA` & `MSAA/Alt`
+
+* [x] Filter to `Grade = 'All Grades`
 
 * When dropping `MSAA` tests, the resulting data-frame contains **1,919,766** rows. This removes **456,180** rows from the data-set.
+
 * Using the aggregate of `All Grades` , the data now represent the average subject proficiency for each school. The data-frame was reduced to **525,044** rows
+
 * I think I maybe able to salvage more demographic information by performing some simple subtraction.  The data wont have as many dimensions as the non-suppressed data, but maybe I can still compare Non-Proficient vs Proficient.
 
 ### 05/25/23
 
-* [X] Drop `pct_approaching`, `pct_met_expectations`, `pct_exceeded_expectations` achievement categories.
-* [X] Drop `*`  There is no way to infer the proficiency of student_groups that do not have at-least 10 valid tests.
+* [x] Drop `pct_approaching`, `pct_met_expectations`, `pct_exceeded_expectations` achievement categories.
+
+* [x] Drop `*`  There is no way to infer the proficiency of student_groups that do not have at-least 10 valid tests.
 
 * I honestly think that the data will be easier to work with if I can make expectations a binary classifier.
-
+  
   * If a student_group's proficiency scores for a building are suppressed due to achievement outliers, the `pct_met_exceeded` is still reported.  If I subtract that number from 1, I will be left with the percent that did not meet expectations.  I cannot infer categories in-between, but I can make a simple "pass/fail" comparison.
   * There is nothing I can do about `*`  because it suggests that enrollment (or number of valid tests ) of of that student_group is less than 10 at the individual school.
-* Assumptions really being challenged here.  Not so simple to calculate missing values without a little extra logic.  Apparently there can be `**` in some of the `pct_met_exceeded`.  There were **44,454** entries where `pct_met_exceeded` was suppressed.  If filtered to "All Students" `student_group`, **2,405** entries are `**` suppressed.
 
+* Assumptions really being challenged here.  Not so simple to calculate missing values without a little extra logic.  Apparently there can be `**` in some of the `pct_met_exceeded`.  There were **44,454** entries where `pct_met_exceeded` was suppressed.  If filtered to "All Students" `student_group`, **2,405** entries are `**` suppressed.
+  
   * I know that I'm going to have to remove the fully suppressed `**` data from my main data-frame, But I'm going to capture it into a separate dataframe for some light analysis.
 
 ### 05/27/23
@@ -94,13 +99,15 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 ### 05/28/23
 
 - Researched data-sets From NCES.  Pulled Common Core data files for each year as well.  The data isn't as nice for getting some of the descriptive labels that I thought I could . . . but it does save me a lot of work in not having to use an API to geoencode addresses.
-
+  
   - Looks like **geoencoding** will not be needed for this project as NCES provides lat/long and addresses for all schools in a given year.  They also include Shapefiles for both school and district boundaries.
+  
   - Created the following data directory structure
-
+    
     - Common Core Data
     - Geoencode - School
     - Geoencode - LEA
+
 - No shape files for 2018.  I wonder what the best way to deal with that would be?
 
 ### 05/29/23
@@ -112,49 +119,71 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 ### 05/30/23
 
-* [X] Reorder dataframe cols for assessment and elsi data
-* [X] merge assessment and elsi
-* [X] deal with the nan values that resulted from the merging
-* [X] Split off `**` suppressed data.  Put it in its own pkl to avoid overwriting it.  I cannot convert proficiency to numbers with `**` still in the `pct_met_exceeded` rows.
+* [x] Reorder dataframe cols for assessment and elsi data
+
+* [x] merge assessment and elsi
+
+* [x] deal with the nan values that resulted from the merging
+
+* [x] Split off `**` suppressed data.  Put it in its own pkl to avoid overwriting it.  I cannot convert proficiency to numbers with `**` still in the `pct_met_exceeded` rows.
 
 * Fixed naming and order of columns in NCES Data.
+
 * Exported NCES data for merging with school-level testing data data.
-
+  
   * I exported this as elsi_clean.pkl 🥒 to my school_based folder.
-* Merged the DataFrames.  It appears that **693** rows from the assessment DataFrames went unmatched when merging.
-* Spoke with Rohit, he gave me some good info.  He always has the coolest hats 🛹
 
+* Merged the DataFrames.  It appears that **693** rows from the assessment DataFrames went unmatched when merging.
+
+* Spoke with Rohit, he gave me some good info.  He always has the coolest hats 🛹
+  
   * [https://gis.stackexchange.com/questions/113799/reading-shapefile-in-python](https://gis.stackexchange.com/questions/113799/reading-shapefile-in-python)
   * import geopandas as gpd
   * shapefile = gpd.read_file("shapefile.shp")
   * print(shapefile)
+
 * Looks like there are **17 schools** that are managed by the state or do not appear more than once before the year 2021.  The vast majority of the reported scores are `**` suppressed.  These will be removed from the **assessments dataframe**.  However, they will be a part of my fully suppressed scores analysis.
+
 * **44,454** scores across all years, schools, and subjects were fully suppressed in the data they were removed.
+
 * **335,452** non-suppressed datapoints are now available in the dataset.
 
 ### 05/31/23
 
-* [X] make a new column `not_met` ElSi of performance
-* [X] Remove assessments that only appear in one year
-* [X] Add subject_level column which associates each type of test with its subject content( e.g., literacy, numeracy, science, and social studies)
-* [X] Create mapping dictionary to apply content_area labels to subjects.
+* [x] make a new column `not_met` ElSi of performance
+
+* [x] Remove assessments that only appear in one year
+
+* [x] Add subject_level column which associates each type of test with its subject content( e.g., literacy, numeracy, science, and social studies)
+
+* [x] Create mapping dictionary to apply content_area labels to subjects.
 
 * I added added a calculated column,  `not_met`. This will allow me to see the total percentage of student_groups that did not meet expectations, regard.
+
 * Made a pivot table to look at average state-wide proficiencies for each subject each year, grouped by test type.
+
 * My new subject_area column was a success.  I created a dictionary and mapped it to associate each test type with a subject area descriptor.
+
 * I made some cool plotly visuals while I was waiting an entire eternity for Conda to install GeoPandas
+
 * Exported prepped dataset to be used in EDA notebooks
 
 ### 06/01/23
 
-* [X] Create Plotly Notebook
-* [X] Create EDA Notebook
-* [ ] Finish planning how you are going to accomplish the objectives Michael gave you.
+* [x] Create Plotly Notebook
+
+* [x] Create EDA Notebook
+
+* [x] Finish planning how you are going to accomplish the objectives Michael gave you.
+
 * [ ] Briefly analyze  `**` suppressed data.
 
 * I made a new EDA and Plotly notebook.  I'm ready to begin diving deeper into the data and to visualize it.
+
 * Read some documentation about plotly dash.
+
 * Could not get the basic Plotly Dash App to run :-)
+
 * Had a great checkin with Michael.  He gave some really solid advice.  I spent some time unpacking what he said and adding action items to my list.
 
 ---
@@ -163,15 +192,15 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 ##### **(1) Focus on getting Dash up and running**
 
-* [ ] Simple averages and whatnot
+* [x] Simple averages and whatnot
 * [ ] Make a mock-up of the app
   * [ ] What will the layout be?
-  * [ ] Figure out the groups you want to compare in a way that makes sense and is visually appealing
+  * [x] Figure out the groups you want to compare in a way that makes sense and is visually appealing
 * [ ] Figure out how to make the map your centerpiece
   * [ ] What shapefiles do you want to use?
     * [ ] I have county and district.  Perhaps I can use both, but I may have to load in ElSi lat long coordinates for the district.
-* [ ] What will the color palette be?
-  * [ ] Tennessee of course!  Look up the state's colors!
+* [x] What will the color palette be?
+  * [x] Tennessee of course!  Look up the state's colors!
 
 ##### **(2) - Make a solid EDA**
 
@@ -194,3 +223,9 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
     * [ ] Magnet
   * [ ] Student Subgroup?
   * [ ] Area (rural vs urban)
+
+### 06/02/23
+
+- Spent the day trying to get Plotly Dash up and running.  I have a simple app that makes effective use of callbacks.  It was a bit of a headache, and it's basic, but it works without error.
+
+- Up until 2.  Finally got the app to a place where I can fiddle with the html layout without breaking.  Apparently you can use emoji in markdown on plotly dash.  Who knew 🤷‍♂️.
