@@ -231,9 +231,7 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 ### 06/03/23
 
-* [ ] Get A Simple Map Made
-- My priorities are to just get a simple map up and running in the dash app.
-
+* [x] My priorities are to just get a simple map up and running in the dash app.
 - School level shapefiles take forever to load.  Exploration of the file reveals it it contains all school districts in the US and its territories.  I will subset it to improve load times.  The same is also true for district shapefiles
 
 - The geometry in my shape file is in CRS form.  I think that the errors in my mapping app want me to re-project my data to convert it from a curved to a flat surface.  Hopefully this will give me the flat map I'm looking for.
@@ -241,6 +239,8 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 - Created function to change dtypes of lat and long assessment columns and then create a GeoPandas df.  I turned on the pkl generator and made a fresh batch.
 
 ### 06/03/23
+
+- [x] Get A Simple Map Made
 
 - Had a chance to speak with Michael today.  We discovered that the geometry in my data did not have polygons.  I was able to get some new shape files from the NCES.
 
