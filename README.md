@@ -193,12 +193,12 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 ##### **(1) Focus on getting Dash up and running**
 
 * [x] Simple averages and whatnot
-* [ ] Make a mock-up of the app
-  * [ ] What will the layout be?
+* [x] Make a mock-up of the app
+  * [x] What will the layout be?
   * [x] Figure out the groups you want to compare in a way that makes sense and is visually appealing
 * [ ] Figure out how to make the map your centerpiece
-  * [ ] What shapefiles do you want to use?
-    * [ ] I have county and district.  Perhaps I can use both, but I may have to load in ElSi lat long coordinates for the district.
+  * [x] What shapefiles do you want to use?
+    * [x] I have county and district.  Perhaps I can use both, but I may have to load in ElSi lat long coordinates for the district.
 * [x] What will the color palette be?
   * [x] Tennessee of course!  Look up the state's colors!
 
@@ -245,3 +245,21 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 - Had a chance to speak with Michael today.  We discovered that the geometry in my data did not have polygons.  I was able to get some new shape files from the NCES.
 
 - I have a pretty Map!!!!!!!! 
+
+### 06/03/23
+
+- [ ] Make aggregated dataframe from assessments
+
+- [ ] Make the weights (Use Valid tests to weight)
+  
+  - [ ] pct_met_exceeded
+  
+  - [ ] stu_tchr_ratio
+  
+  - [ ] fte_teachers
+
+- Made a pivot table to aggregate school data into district data.  I will use this so that I can merge with district geometry for my choropleth map.
+  
+  - I actually made several.  However, they are unweighted, so I'll need to remake them.
+
+- I spoke with Michael again today.  It looks like my pivots to not take into account the differing sizes of the population.  I will need to weight the results.  I will weight them by number of valid tests.
