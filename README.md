@@ -244,22 +244,56 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 - Had a chance to speak with Michael today.  We discovered that the geometry in my data did not have polygons.  I was able to get some new shape files from the NCES.
 
+- ⏰ Several hours later ⏰
+
 - I have a pretty Map!!!!!!!! 
 
 ### 06/03/23
 
-- [ ] Make aggregated dataframe from assessments
+- [ ] Make aggregated dataframe from pivots
 
-- [ ] Make the weights (Use Valid tests to weight)
+- [x] Make the weights (Use Valid tests to weight)
+  
+  - [x] pct_met_exceeded
+  
+  - [x] stu_tchr_ratio
+  
+  - [x] fte_teachers
+
+- [ ] Make the weighted averages pivots
   
   - [ ] pct_met_exceeded
+    
+    - [ ] numerator
+    
+    - [ ] denominator
+    
+    - [ ] weighted average 
   
   - [ ] stu_tchr_ratio
+    
+    - [ ] numerator
+    
+    - [ ] denominator
   
+  - [ ]   
   - [ ] fte_teachers
-
+    
+    - [ ] numerator
+    
+    - [ ] denominator
+    
+    - [ ] weighted average
+  
+  - [ ] 
 - Made a pivot table to aggregate school data into district data.  I will use this so that I can merge with district geometry for my choropleth map.
   
   - I actually made several.  However, they are unweighted, so I'll need to remake them.
 
 - I spoke with Michael again today.  It looks like my pivots to not take into account the differing sizes of the population.  I will need to weight the results.  I will weight them by number of valid tests.
+
+- Made sure that numeric columns had the correct dtype
+
+- I created three weight columns for 'pct_met_exceeded', 'stu_tchr_ratio', 'fte_teachers' based on valid tests as a weight
+
+- Encoded 'magnet', 'charter', and 'title_1' columns to 1 and 0 values from 'yes', 'no' strings. 
