@@ -196,7 +196,7 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 * [x] Make a mock-up of the app
   * [x] What will the layout be?
   * [x] Figure out the groups you want to compare in a way that makes sense and is visually appealing
-* [ ] Figure out how to make the map your centerpiece
+* [x] Figure out how to make the map your centerpiece
   * [x] What shapefiles do you want to use?
     * [x] I have county and district.  Perhaps I can use both, but I may have to load in ElSi lat long coordinates for the district.
 * [x] What will the color palette be?
@@ -238,7 +238,7 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 - Created function to change dtypes of lat and long assessment columns and then create a GeoPandas df.  I turned on the pkl generator and made a fresh batch.
 
-### 06/03/23
+### 06/04/23
 
 - [x] Get A Simple Map Made
 
@@ -246,46 +246,28 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 - ⏰ Several hours later ⏰
 
-- I have a pretty Map!!!!!!!! 
+- I have a pretty Map!!!!!!!!
 
-### 06/03/23
+### 06/05/23
 
 - [ ] Make aggregated dataframe from pivots
 
 - [x] Make the weights (Use Valid tests to weight)
   
   - [x] pct_met_exceeded
-  
   - [x] stu_tchr_ratio
-  
   - [x] fte_teachers
 
-- [ ] Make the weighted averages pivots
+- [x] Make the weighted averages pivots
   
-  - [ ] pct_met_exceeded
+  - [x] pct_met_exceeded
     
-    - [ ] numerator
-    
-    - [ ] denominator
-    
-    - [ ] weighted average 
+    - [x] numerator
+    - [x] denominator
+    - [x] weighted average
   
-  - [ ] stu_tchr_ratio
-    
-    - [ ] numerator
-    
-    - [ ] denominator
-  
-  - [ ]   
-  - [ ] fte_teachers
-    
-    - [ ] numerator
-    
-    - [ ] denominator
-    
-    - [ ] weighted average
-  
-  - [ ] 
+  - [ ]
+
 - Made a pivot table to aggregate school data into district data.  I will use this so that I can merge with district geometry for my choropleth map.
   
   - I actually made several.  However, they are unweighted, so I'll need to remake them.
@@ -296,4 +278,18 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 - I created three weight columns for 'pct_met_exceeded', 'stu_tchr_ratio', 'fte_teachers' based on valid tests as a weight
 
-- Encoded 'magnet', 'charter', and 'title_1' columns to 1 and 0 values from 'yes', 'no' strings. 
+- Encoded 'magnet', 'charter', and 'title_1' columns to 1 and 0 values from 'yes', 'no' strings.
+
+### 06/06/23
+
+- [x] stu_tchr_ratio
+  
+  - [x] Weighted Sum
+  - [x] Weighted Average
+
+- [x] fte_teachers
+  
+  - [x] Weighted Sum
+  - [x] Weighted Average
+
+- I found a mathematical error in my work from yesterday.  I apparently neglected PEMDAS!!!
