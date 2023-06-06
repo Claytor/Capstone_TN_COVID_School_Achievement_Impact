@@ -293,3 +293,9 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
   - [x] Weighted Average
 
 - I found a mathematical error in my work from yesterday.  I apparently neglected PEMDAS!!!
+
+- I got all of my pivot table operations completed.  I now have weighted averages for my response variables.  YAY!
+
+- I spent way longer than necessary making graphs.  I have a big one for Average Weighted Proficiency by School Level, Content Area, and Year.  Its not as dramatic as I'd like and its kinda visually confusing.  It's also a memory hog.  I'm going to have to break it down when I'm doing my dashboard.  I also need to figure out how to modularize the components to make them reactive to user input.
+
+- I'm going to take a quick break before class.
