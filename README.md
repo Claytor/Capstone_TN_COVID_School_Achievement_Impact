@@ -306,8 +306,6 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
   
   - [ ] I need to be able to **explain** the results and why I weighted.
 
-- [ ] 
-
 - I found a mathematical error in my work from yesterday.  I apparently neglected PEMDAS!!!
 
 - I got all of my pivot table operations completed.  I now have weighted averages for my response variables.  YAY!
@@ -321,3 +319,41 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
   - if df[df[‘subject_area’]==‘science:
     
     - else logic
+
+#### 06/07/23
+
+- There may be some funk to the way student subgroups are labeled.  I need to do a little digging on the TDOE website to find out why.
+
+- Started Google Site for presentation purposes.
+
+- I remembered that I had a Dash app.  I used It to help me identify completeness of data and which groups I can compare.
+  
+  I made a table to help make decisions about which groups that I can compare and which I cannot.  
+  
+  | Student Category                             | Elem | Middle | High | Sec | Other | Keep? | Notes                                                                                                                                                                                                                       |
+  | -------------------------------------------- |:----:|:------:|:----:|:---:|:-----:|:-----:| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | 'All Students',                              | ✅    | ✅      | ✅    | ✅   | ✅     | ✅     | Appears in all years and all subjects                                                                                                                                                                                       |
+  | 'American Indian or Alaska Native',          | ✅    | ❌      | ❌    | ❌   | ❌     | ❌     | Only appears 2 years post covid in elementary                                                                                                                                                                               |
+  | 'Asian',                                     | ✅    | ✅      | ✅    | ✅   | ✅     | ✅     | Appears in all years and all subjects                                                                                                                                                                                       |
+  | 'Black or African American',                 | ✅    | ✅      | ✅    | ✅   | ✅     | ✅     | Appears in all years and all subjects                                                                                                                                                                                       |
+  | 'Black/Hispanic/Native American',            | ✅    | ✅      | ✅    | ✅   | ✅     | ✅     | Appears All Years and in all subjects                                                                                                                                                                                       |
+  | 'Economically Disadvantaged',                | ✅    | ✅      | ✅    | ✅   | ✅     | ✅     | Appears All Years and in all subjects                                                                                                                                                                                       |
+  | 'English Learner Transitional 1-4',          | ✅    | ✅      | ✅    | 🤏  | ✅     | 🤷‍♂️ | Secondary has lots of gaps in the timelines of various assessments                                                                                                                                                          |
+  | 'English Learners',                          | ✅    | ✅      | ✅    | ❌   | 🤏    | 🤷‍♂️ | - Secondary - No Data - Other - ELA and Math are good, SS no post covid, Sci no precovid                                                                                                                                    |
+  | 'English Learners with Transitional 1-4',    | ✅    | ✅      | ✅    | 🤏  | 🤏    | 🤷‍♂️ | - Secondary - Science only 18 & 19                                                                                                                                                                                          |
+  | 'Female',                                    | 🤏   | 🤏     | 🤏   | 🤏  | 🤏    | 🤷‍♂️ | All Levels - Last valid assessment at 2019 - First time group was included in my dataset was 2019 (in general, lags will work for all subjects except for  - No precovid science for lag.  Can't make pre-to now lag eigher |
+  | 'Gifted',                                    | 🤏   | 🤏     | 🤏   | ❌   | ❌     | 🤷‍♂️ | - Scores start at 2019 - No pre-covid science scores                                                                                                                                                                        |
+  | 'Hispanic',                                  | ✅    | ✅      | ✅    | ✅   | ✅     | ✅     | Keep.  All good to go.                                                                                                                                                                                                      |
+  | 'Male',                                      | 🤏   | 🤏     | 🤏   | 🤏  | 🤏    | 🤷‍♂️ | All Levels - Last valid assessment at 2019 - First time group was included in my dataset was 2019 (in general, lags will work for all subjects except for  - Can only do science lag for the 21/22 timeframe                |
+  | 'Native Hawaiian or Other Pacific Islander', | ❌    | ✅      | ❌    | ❌   | ❌     | ❌     | Drop                                                                                                                                                                                                                        |
+  | 'Non-Black/Hispanic/Native American',        | ✅    | ✅      | ✅    | ✅   | ✅     | ✅     | Keep.  All Good to Go                                                                                                                                                                                                       |
+  | 'Non-Economically Disadvantaged',            | ✅    | ✅      | ✅    | ✅   | ✅     | ✅     | Keep.  All Good to Go                                                                                                                                                                                                       |
+  | 'Non-English Learners/Transitional 1-4',     | ✅    | ✅      | ✅    | ✅   | ✅     | ✅     | Keep.  All Good to Go                                                                                                                                                                                                       |
+  | 'Non-Students with Disabilities',            | ✅    | ✅      | ✅    | ✅   | ✅     | ✅     | Keep.  All Good to Go                                                                                                                                                                                                       |
+  | 'Students with Disabilities',                | ✅    | ✅      | ✅    | ✅   | ✅     | ✅     | Keep.  All Good to Go                                                                                                                                                                                                       |
+  | 'Super Subgroup',                            | ✅    | ✅      | ✅    | ✅   | ✅     | ✅     | Keep.  All Good to Go                                                                                                                                                                                                       |
+  | 'White']                                     | ✅    | ✅      | ✅    | ✅   | ✅     | ✅     | Keep.  All Good to Go                                                                                                                                                                                                       |
+  
+  
+  
+  It also seems like there are comparisons I can make between "in group" and 'out group' categories
