@@ -292,10 +292,32 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
   - [x] Weighted Sum
   - [x] Weighted Average
 
+- [ ] I need to join my **weighted average** column with my **geopandas** dataframe to get my **choropleth** map working.
+  
+  - [ ] I'll make a 🥒 machine to output current weighted average pivot table to my data folder for import into my plotly visualizations folder.
+
+- [ ] I need to figure out how compare to last previous valid test in my pivot for when I calculate my lag averages.  Initial calculation were based  on 2019, but the last time Science was addressed was in the year 2018.  This precludes all science assessments from lag calculations.
+  
+  - [ ] Come to think of it.  There are more categorical descriptors that appear in some years and don't in others.  I need to salvage whatever demographic data I can.
+
+- [ ] I need to Get a basic version of my **Choropleth** *(is that how you spell that?)* map integrated into my **dash**
+
+- [ ] I need to do some deeper **EDA** on my **weighted average** data 
+  
+  - [ ] I need to be able to **explain** the results and why I weighted.
+
+- [ ] 
+
 - I found a mathematical error in my work from yesterday.  I apparently neglected PEMDAS!!!
 
 - I got all of my pivot table operations completed.  I now have weighted averages for my response variables.  YAY!
 
-- I spent way longer than necessary making graphs.  I have a big one for Average Weighted Proficiency by School Level, Content Area, and Year.  Its not as dramatic as I'd like and its kinda visually confusing.  It's also a memory hog.  I'm going to have to break it down when I'm doing my dashboard.  I also need to figure out how to modularize the components to make them reactive to user input.
+- I spent way longer than necessary making graphs.  I have a big one for Average Weighted Proficiency by School Level, Content Area, and Year.  Its not as dramatic as I'd like and its kinda visually confusing.  It's also a memory hog.  I'm going to have to break it down when I'm doing my dashboard.  I also need to figure out how to modular-ize the components to make them reactive to user input.
 
 - I'm going to take a quick break before class.
+
+- Spoke with Neda for my class check-in tonight.  She's always so positive.  She gave me some feedback for how to handle the logic of my calculations.
+  
+  - if df[df[‘subject_area’]==‘science:
+    
+    - else logic
