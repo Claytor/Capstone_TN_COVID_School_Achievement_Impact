@@ -354,4 +354,4 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
     
     -  American Indian or Alaska Native
 
-###🔖 The lags are lvpp (last valid pre-pandemic to 2021), 
+### 🔖 The lags are lvpp (last valid pre-pandemic to 2021), intra (2021 - 2022), pre_post (lvpp to 2022).
