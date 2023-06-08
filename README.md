@@ -206,13 +206,13 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 * [ ] Look at the drops (aka lag scores)
 * [ ] What how to individual schools compare to the state and district?
-* [ ] Create Lag Scores
-  * [ ] What is the difference between year's 2019 and 2022? (Change Prepandemic and Now)
-  * [ ] What is the difference between year's 2021 and 2022 (Impact Phase)
-* [ ] County Level
-  * [ ] How does the change in scores relate to the state Average in the dataset?
-    * [ ] Impact Phase
-    * [ ] Change Pre-pandemic vs. now
+* [x] Create Lag Scores
+  * [x] What is the difference between year's 2019 and 2022? (Change Prepandemic and Now)
+  * [x] What is the difference between year's 2021 and 2022 (Impact Phase)
+* [x] County Level
+  * [x] How does the change in scores relate to the state Average in the dataset?
+    * [x] Impact Phase
+    * [x] Change Pre-pandemic vs. now
 * [ ] How did the subpopulatons do?
 
 ##### **(3) - Figure out Linear Regression**
@@ -250,7 +250,7 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 ### 06/05/23
 
-- [ ] Make aggregated dataframe from pivots
+- [x] Make aggregated dataframe from pivots
 
 - [x] Make the weights (Use Valid tests to weight)
   
@@ -294,13 +294,13 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 - [ ] I need to join my **weighted average** column with my **geopandas** dataframe to get my **choropleth** map working.
   
-  - [ ] I'll make a 🥒 machine to output current weighted average pivot table to my data folder for import into my plotly visualizations folder.
+  - [x] I'll make a 🥒 machine to output current weighted average pivot table to my data folder for import into my plotly visualizations folder.
 
-- [ ] I need to figure out how compare to last previous valid test in my pivot for when I calculate my lag averages.  Initial calculation were based  on 2019, but the last time Science was addressed was in the year 2018.  This precludes all science assessments from lag calculations.
+- [x] I need to figure out how compare to last previous valid test in my pivot for when I calculate my lag averages.  Initial calculation were based  on 2019, but the last time Science was addressed was in the year 2018.  This precludes all science assessments from lag calculations.
   
-  - [ ] Come to think of it.  There are more categorical descriptors that appear in some years and don't in others.  I need to salvage whatever demographic data I can.
+  - [x] Come to think of it.  There are more categorical descriptors that appear in some years and don't in others.  I need to salvage whatever demographic data I can.
 
-- [ ] I need to Get a basic version of my **Choropleth** *(is that how you spell that?)* map integrated into my **dash**
+- [x] I need to Get a basic version of my **Choropleth** *(is that how you spell that?)* map integrated into my **dash**
 
 - [ ] I need to do some deeper **EDA** on my **weighted average** data 
   
@@ -353,5 +353,11 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
     - Native Hawaiian or Other Pacific Islander
     
     -  American Indian or Alaska Native
+
+- Okay, I have all my lag categories ready to go.
+
+- I tried furiously to merge the pivot to the geometry files, no joy.  Then I decided to go back upstream to merge on the dataframe before pivoting.
+  
+  - I think it worked?  I changed the CRS from assessment to the same crs of the district boundary dataframe EPSG:4269.  Then I did a spatial join.  On first glance, everything looks good.  I'll have to inspect it a little more thoroughly tomorrow.
 
 ### 🔖 The lags are lvpp (last valid pre-pandemic to 2021), intra (2021 - 2022), pre_post (lvpp to 2022).
