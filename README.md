@@ -382,4 +382,8 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 - Created a "cleaned" dictionary of district names and compared against merged TNDOE/ElSi data.  This appears acceptable
 
-- Integrated changes into assessments df
+- Integrated changes into assessments.  All Groovy
+
+- Regenerated weighted average pivots.  All Groovy
+
+- Regenerated lag score pivots with corrected district names.  All groovy
