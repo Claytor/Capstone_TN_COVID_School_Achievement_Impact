@@ -365,3 +365,21 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 ### 06/08/23
 
 - I spent the morning trying to figure out how to get the data I needed out of my pivot tables for the purposes of mapping.
+  
+  - I realized that the utility of the pivot data structure was exhausted after the weighted average calculations were made.  A dataframe was constructed from the pivot to suit my purposes.
+
+- I found out that the mapping was not consistent with TNDOE/ElSi & EDGE datasets.
+
+### 06/09/23
+
+- Created temporary dataframe called `geo_assessemtns` to test geospatial merging
+
+- Spatial Join of `assessemnts` (lat/long point) and `tn_lea` school district polygons
+  
+  - Set CRS -> Re-projected school assessments to match flat geometry of district boundaries
+
+- Looked for differences in naming conventions.
+
+- Created a "cleaned" dictionary of district names and compared against merged TNDOE/ElSi data.  This appears acceptable
+
+- Integrated changes into assessments df
