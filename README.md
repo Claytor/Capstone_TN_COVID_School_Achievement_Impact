@@ -234,7 +234,7 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 * [x] My priorities are to just get a simple map up and running in the dash app.
 - School level shapefiles take forever to load.  Exploration of the file reveals it it contains all school districts in the US and its territories.  I will subset it to improve load times.  The same is also true for district shapefiles
 
-- The geometry in my shape file is in CRS form.  I think that the errors in my mapping app want me to re-project my data to convert it from a curved to a flat surface.  Hopefully this will give me the flat map I'm looking for.
+- The geometry in my shape file is in CRS projection.  I think that the errors in my mapping app want me to re-project my data to convert it from a curved to a flat surface.  Hopefully this will give me the flat map I'm looking for.
 
 - Created function to change dtypes of lat and long assessment columns and then create a GeoPandas df.  I turned on the pkl generator and made a fresh batch.
 
@@ -361,3 +361,7 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
   - I think it worked?  I changed the CRS from assessment to the same crs of the district boundary dataframe EPSG:4269.  Then I did a spatial join.  On first glance, everything looks good.  I'll have to inspect it a little more thoroughly tomorrow.
 
 ### 🔖 The lags are lvpp (last valid pre-pandemic to 2021), intra (2021 - 2022), pre_post (lvpp to 2022).
+
+### 06/08/23
+
+- I spent the morning trying to figure out how to get the data I needed out of my pivot tables for the purposes of mapping.
