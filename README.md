@@ -387,3 +387,5 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 - Regenerated weighted average pivots.  All Groovy
 
 - Regenerated lag score pivots with corrected district names.  All groovy
+
+- Tried to merge with shapes.  Caused a cascade of issues.  Resolved.  ALL GROOVY!!!!!!
