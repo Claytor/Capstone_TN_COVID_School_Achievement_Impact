@@ -389,3 +389,5 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 - Regenerated lag score pivots with corrected district names.  All groovy
 
 - Tried to merge with shapes.  Caused a cascade of issues.  Resolved.  ALL GROOVY!!!!!!
+
+- Generated a 5.9 gb geojson file . . . man oh man I hope this loads
