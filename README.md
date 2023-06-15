@@ -176,7 +176,7 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 * [x] Finish planning how you are going to accomplish the objectives Michael gave you.
 
-* [ ] Briefly analyze  `**` suppressed data.
+* [x] Briefly analyze  `**` suppressed data.
 
 * I made a new EDA and Plotly notebook.  I'm ready to begin diving deeper into the data and to visualize it.
 
@@ -204,8 +204,8 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 ##### **(2) - Make a solid EDA**
 
-* [ ] Look at the drops (aka lag scores)
-* [ ] What how to individual schools compare to the state and district?
+* [x] Look at the drops (aka lag scores)
+* [x] What how to individual schools compare to the state and district?
 * [x] Create Lag Scores
   * [x] What is the difference between year's 2019 and 2022? (Change Prepandemic and Now)
   * [x] What is the difference between year's 2021 and 2022 (Impact Phase)
@@ -217,12 +217,12 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 ##### **(3) - Figure out Linear Regression**
 
-* [ ] What Variables Do I want to use?
-  * [ ] School Type?
-    * [ ] Title 1
-    * [ ] Magnet
-  * [ ] Student Subgroup?
-  * [ ] Area (rural vs urban)
+* [x] What Variables Do I want to use?
+  * [x] School Type?
+    * [x] Title 1
+    * [x] Magnet
+  * [x] Student Subgroup?
+  * [x] Area (rural vs urban)
 
 ### 06/02/23
 
@@ -263,10 +263,12 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
   - [x] pct_met_exceeded
     
     - [x] numerator
+    
     - [x] denominator
+    
     - [x] weighted average
-  
-  - [ ]
+    
+    - 
 
 - Made a pivot table to aggregate school data into district data.  I will use this so that I can merge with district geometry for my choropleth map.
   
@@ -292,7 +294,7 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
   - [x] Weighted Sum
   - [x] Weighted Average
 
-- [ ] I need to join my **weighted average** column with my **geopandas** dataframe to get my **choropleth** map working.
+- [x] I need to join my **weighted average** column with my **geopandas** dataframe to get my **choropleth** map working.
   
   - [x] I'll make a 🥒 machine to output current weighted average pivot table to my data folder for import into my plotly visualizations folder.
 
@@ -302,9 +304,9 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 - [x] I need to Get a basic version of my **Choropleth** *(is that how you spell that?)* map integrated into my **dash**
 
-- [ ] I need to do some deeper **EDA** on my **weighted average** data 
+- [x] I need to do some deeper **EDA** on my **weighted average** data 
   
-  - [ ] I need to be able to **explain** the results and why I weighted.
+  - [x] I need to be able to **explain** the results and why I weighted.
 
 - I found a mathematical error in my work from yesterday.  I apparently neglected PEMDAS!!!
 
@@ -391,3 +393,13 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 - Tried to merge with shapes.  Caused a cascade of issues.  Resolved.  ALL GROOVY!!!!!!
 
 - Generated a 5.9 gb geojson file . . . man oh man I hope this loads
+
+- Okay good news!  I got the map to load and color according to my specifications.  
+  
+  - Not so good news - .shp file takes 5 minutes to load
+  
+  - For the lag calculations, there are more holes in the plot than a bad sci-fi movie.
+  
+  - Its REALLY easy to crash the kernel and takes 6 minutes to load a usable map every time that happens.
+  
+  - I'm going to have to figure out a way to decrease load times.
