@@ -4,15 +4,34 @@
 
 This project aims to analyze the impact of learning loss and the effectiveness of learning loss recovery interventions for Students in Tennessee.  For the purpose of this analysis, impact and recovery is measured in terms of changes in annual achievement assessment scores from the years 2018 - 2022.  The bulk of the data used in this analysis was provided by the Tennessee Department of Education.  In aggregate, the data contains 2,375,946 entries and represents approximately 485 schools within Tennessee's 137 school districts for a combined
 
-The motivation for this project stems from the observation that, contrary to my personal expectations, achievement metrics in some districts continued to decline during the post-COVID learning recovery phase. I hope that by measuring the rate of improvement (ROI) for each school I will be able to discern features in individual school performance that could be predictive of a district’s performance. Geo-spatial data and visualizations will be used to help users explore the data through a dashboard developed using the Plotly Dash package in Python.
+The motivation for this project stems from the observation that, contrary to my personal expectations, achievement metrics in some districts continued to decline during the post-COVID learning recovery phase. I hope that by measuring the rate of improvement (ROI) for each school I will be able to discern features in individual school performance that could be predictive of a district’s performance. To achieve its goals this project makes use of exploratory data analysis, Geo-spatial mapping, data visualizations,  and a Plotly Dash dashboard that will enable users explore annual trends in assessment data for all subjects, school levels, and student subgroups.
 
 ## Motivation
 
 When analyzing district-wide achievement data, I observed that achievement metrics in some school districts continued to decline during the post-COVID learning recovery phase. This was contrary to my original expectations and prompted an interest in exploring individual school achievement scores to identify any discernible features that could be indicative of continued loss or recovery. This project seeks to understand the extent of learning loss and recovery efforts in individual schools within all Tennessee districts, taking into account the significant disruption to education caused by the COVID-19 pandemic.
 
+The motivation for the project came from a deep desire to understand how traditionally underserved student groups may have been differently impacted by learning interruptions associated with the COVID pandemic.  This project is a continuation of  my efforts to understand the differences between pre-pandemic achievement metrics and current achievement metrics for all student groups in Tennessee.  Although the full dataset has been broadly analyzed by the TNDOE, what is released to the public is heavily suppressed in terms of outlier scores.  Tennessee's most underserved groups represent the vast majority of suppressed assessment data.
+I want to discover their story for myself.
+
 ## Data Question
 
 Given a school's learning loss impact compared to its previous pre-pandemic TNReady assessments, what was the rate of improvement/loss given learning loss interventions? Are there any discernible features in achievement scores for individual schools that could be indicative of continued loss or recovery for the district?
+
+## Data Sources
+
+**Tennessee Department of Education** - Assessment data spans from the 2018 to 2022 testing seasons. It includes 2.4 million data points from 485 schools in Tennessee's 137 school districts.
+
+**National Center for Education Statistics** - Supplemental data were acquired from the National Center for Education Statistics (NCES) Common Core of Data (CCD), Elementary/Secondary Information System (ElSi), and Education Demographic and Geographic Estimates initiative (EDGE).
+
+Broadly, the data analyzed contains the school-level testing results for 16 TnReady/TCAP assessments joined with supplemental information about those schools.
+
+
+
+## Brief Findings
+
+Please see the [project website](https://sites.google.com/claytor.me/covidlossandrecovery/home) of a brief overview of the findings.
+
+
 
 ---
 
