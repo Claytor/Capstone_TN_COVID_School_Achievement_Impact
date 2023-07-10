@@ -25,13 +25,9 @@ Given a school's learning loss impact compared to its previous pre-pandemic TNRe
 
 Broadly, the data analyzed contains the school-level testing results for 16 TnReady/TCAP assessments joined with supplemental information about those schools.
 
-
-
 ## Brief Findings
 
 Please see the [project website](https://sites.google.com/claytor.me/covidlossandrecovery/home) of a brief overview of the findings.
-
-
 
 ---
 
