@@ -278,12 +278,8 @@ Please see the [project website](https://sites.google.com/claytor.me/covidlossan
   - [x] pct_met_exceeded
     
     - [x] numerator
-    
     - [x] denominator
-    
     - [x] weighted average
-    
-    - 
 
 - Made a pivot table to aggregate school data into district data.  I will use this so that I can merge with district geometry for my choropleth map.
   
@@ -319,7 +315,7 @@ Please see the [project website](https://sites.google.com/claytor.me/covidlossan
 
 - [x] I need to Get a basic version of my **Choropleth** *(is that how you spell that?)* map integrated into my **dash**
 
-- [x] I need to do some deeper **EDA** on my **weighted average** data 
+- [x] I need to do some deeper **EDA** on my **weighted average** data
   
   - [x] I need to be able to **explain** the results and why I weighted.
 
@@ -345,8 +341,7 @@ Please see the [project website](https://sites.google.com/claytor.me/covidlossan
 
 - I remembered that I had a Dash app.  I used It to help me identify completeness of data and which groups I can compare.
   
-  - I made a table to help make decisions about which groups that I can compare and which I cannot.  
-  
+  - I made a table to help make decisions about which groups that I can compare and which I cannot.
   - It also seems like there are comparisons I can make between "in group" and 'out group' categories
 
 - Super Sub Group It is a combination of the three historically underserved student groups. Those are Black/Hispanic/Native American, Students with Disabilities, and Economically Disadvantaged. Students are counted in the Super Subgroup if they fall into any of those categories
@@ -354,9 +349,7 @@ Please see the [project website](https://sites.google.com/claytor.me/covidlossan
 - There’s 3 variations of EL. English Learner, English Learner Transitional 1-4, and English Learners with Transitional 1-4
   
   - English Learners are the active English Learners. The students who were eligible to receive EL services for the school year.
-  
   - English Learner Transitional 1-4 are students who exited EL status and are in their 1st through 4th year after exiting.
-  
   - English Learners with Transitional 1-4 is the combination of those two groups
 
 - Drop From Application
@@ -366,9 +359,7 @@ Please see the [project website](https://sites.google.com/claytor.me/covidlossan
   - Student Group
     
     - Gifted,
-    
     - Native Hawaiian or Other Pacific Islander
-    
     -  American Indian or Alaska Native
 
 - Okay, I have all my lag categories ready to go.
@@ -409,12 +400,42 @@ Please see the [project website](https://sites.google.com/claytor.me/covidlossan
 
 - Generated a 5.9 gb geojson file . . . man oh man I hope this loads
 
-- Okay good news!  I got the map to load and color according to my specifications.  
+- Okay good news!  I got the map to load and color according to my specifications.
   
   - Not so good news - .shp file takes 5 minutes to load
-  
   - For the lag calculations, there are more holes in the plot than a bad sci-fi movie.
-  
   - Its REALLY easy to crash the kernel and takes 6 minutes to load a usable map every time that happens.
-  
   - I'm going to have to figure out a way to decrease load times.
+
+### 07/25/23 - The much needed log update
+
+* [ ] Fix the windows for the other predictor variable lags
+* [ ] Dig deeper into the stats models (e.g. linear regression)
+* [ ] **YOU NEED TO PRACTICE SQL AND R!!!**  Find better ways to integrate them into the project.
+* [ ] Get your app published on Heroku and remove the localhost placeholder on project website
+* [ ] Make the darn map reactive to user input!
+
+#### Claytor has not been keeping up with the log.  Hopefully the United Federation of Planets does not notice 🖖.  This is my effort to get back on track.  I've been so wrapped up in searching for a new job, that I've been neglecting some of my hard-won skills.  Now that I've confessed my sins, I am going to continue developing this project because:
+
+- I feel like it would be great practice
+- I already have a workable pipeline that I can tweak
+- The next batch of school-level data is likely to be released next month meaning that I will have three post-covid data-points and perhaps I can develop some useful predictive models for the future.
+- **I have unfinished buisness and its bothering the heck out of me!!!**
+
+#### Progress since last log update
+
+* The lags:
+  * I'm embarrassed to say it, but the **pre-post** window was **incorrectly calculated** when I presented my Capstone findings.  I'm so grateful that one of the people I presented to was a subject area expert and actually had a hand in developing the data.  Although I was a bit shaken when he pointed it out, I'm ultimately glad that he caught the error by questioning the reasonableness of the calculations.
+  * The error resulted from incorrectly addressing the last lag window.  I verified the fix with a random sample of the data, and I'm happy to report that the math is correct!  I will need to similarly adjust other variables.
+* The dashboard
+  * I have created a Heroku account and am working on figuring out how to push it to the platform.  It's not as simple pushing from a .ipynb as pushing a Shiny app in R (I should also revisit my R code for the practice and to apply better analytics skills that I have gained since first publishing it.)
+* THE MAP!
+  * I've heard that geospatial analysis is kind of niche, but I still want the skill and I NEED TO MAKE MY MAP REACTIVE because I said I would (plus its fun).
+  * I sought out help from a mentor and he suggested a strategy that I didn't consider.  I was wracking my brain trying to find ways to reduce the load time of the map generation.  I had thought there would be significant savings in fixing dtypes.  I thought that this would decrease the 6 gb geojson dataframe by a gig or more.  This was not the correct thinking for accomplishing the immediate goal.
+  * Instead of joining two relatively small dataframes and making a huge one to import into a separate notebook, I should just import the separate dataframes and merge them in real time based on user input.  I feel silly for not considering that as an option.  The unified dataframe is huge for no good reason and merging the two dataframes is honestly quicker than importing the unified geojson 🤦‍♂️.
+* Data management
+  * My strategy for the data pipeline has been to keep all processes separate in different notebooks.  I'm starting to feel as if this is wildly inefficient.
+  * Though I currently do not have the expertise, I think it could be useful lay off the .pkl and .csv and instead use pgadmin and SQLAlchemy.
+  * I imagine that there will be a bit of a learning curve.  I have experience with writing queries, but I've never taken the time to develop make my own PostgreSQL database from data collected in "the wild".  I need to devote some of my time to studying this skill.
+* New learning
+  * I have been given a seat at Nashville Software School's Advanced SQL for developers course and I feel like keeping this project in mind will greatly help reinforce my learning.
