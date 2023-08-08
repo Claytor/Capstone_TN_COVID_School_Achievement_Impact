@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import pandas as pd
@@ -14,7 +14,7 @@ from dash import Dash, Input, Output, dcc, html
 from jupyter_dash import JupyterDash
 
 # Load Data
-assessments = pd.read_pickle('../data/school_based/assessments_clean.pkl')
+assessments = pd.read_pickle('./data/assessments_clean.pkl')
 
 # Get the available levels, student groups, and subject areas
 available_levels = assessments['school_lvl'].unique()
